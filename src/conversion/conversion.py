@@ -1,11 +1,10 @@
 import decimal
 
-
 class Conversion:
     def celsius_a_fahrenheit(self, celsius):
+    
         fahrenheit = (celsius * 9/5) + 32
         return float(fahrenheit)
-
     def fahrenheit_a_celsius(self, fahrenheit):
         celsius = (fahrenheit - 32) * 5/9
         return float(celsius)
