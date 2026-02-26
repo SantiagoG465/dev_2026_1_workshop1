@@ -28,12 +28,12 @@ class Conversion:
             decimal //= 2
         return binario
     
-    def binario_a_decimal(self, binario):
+def binario_a_decimal(self, binario):
 
-     decimal = int(binario, 2)
+ decimal = int(binario, 2)
 
-     return decimal
-    
+ return decimal
+
 def decimal_a_romano(self, numero):
     valores = [
         (1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'),
@@ -50,8 +50,7 @@ def decimal_a_romano(self, numero):
     
     return resultado
 
-class Conversion:
-    MORSE_CODE_DICT = {
+MORSE_CODE_DICT = {
     'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',
     'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---',
     'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---',
