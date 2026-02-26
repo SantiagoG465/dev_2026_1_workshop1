@@ -114,22 +114,48 @@ class Data:
 
     
     def implementar_cola(self):
-        """
-        Implementa una estructura de datos tipo cola (queue) usando listas.
-        
-        Returns:
-            dict: Diccionario con métodos enqueue, dequeue, peek y is_empty
-        """
-        pass
+       
+        cola = []
+
+        def enqueue(item):
+            # Agregar al final de la lista
+            cola.append(item)
+
+        def dequeue():
+            # Quitar el primero (índice 0) si hay elementos
+            if not is_empty():
+                return cola.pop(0)
+            return None
+
+        def peek():
+            # Ver el primero sin quitarlo
+            return cola[0] if not is_empty() else None
+
+        def is_empty():
+            # Verificar si está vacía
+            return len(cola) == 0
+
+        return {
+            "enqueue": enqueue,
+            "dequeue": dequeue,
+            "peek": peek,
+            "is_empty": is_empty
+        }
     
     def matriz_transpuesta(self, matriz):
-        """
-        Calcula la transpuesta de una matriz.
         
-        Args:
-            matriz (list): Lista de listas que representa una matriz
-            
-        Returns:
-            list: Matriz transpuesta
-        """
-        pass
+        if not matriz or not matriz[0]:
+            return []
+
+        filas = len(matriz)
+        columnas = len(matriz[0])
+
+        # Creamos una nueva matriz intercambiando dimensiones
+        transpuesta = []
+        for j in range(columnas):
+            nueva_fila = []
+            for i in range(filas):
+                nueva_fila.append(matriz[i][j])
+            transpuesta.append(nueva_fila)
+
+        return transpuesta
