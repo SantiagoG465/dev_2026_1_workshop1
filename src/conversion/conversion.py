@@ -91,17 +91,20 @@ def texto_a_morse(self, texto):
     return " ".join(resultado)
 
 def morse_a_texto(self, morse):
-        """
-        Convierte código Morse a texto.
-        
-        Args:
-            morse (str): Código Morse separado por espacios
-            
-        Returns:
-            str: Texto decodificado
-            
-        Ejemplo:
-            morse_a_texto("... --- ...") -> "SOS"
-            morse_a_texto(".... . .-.. .-.. ---") -> "HELLO"
-        """
-        pass
+    MORSE_CODE_DICT = {
+        '.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D', '.': 'E',
+        '..-.': 'F', '--.': 'G', '....': 'H', '..': 'I', '.---': 'J',
+        '-.-': 'K', '.-..': 'L', '--': 'M', '-.': 'N', '---': 'O',
+        '.--.': 'P', '--.-': 'Q', '.-.': 'R', '...': 'S', '-': 'T',
+        '..-': 'U', '...-': 'V', '.--': 'W', '-..-': 'X', '-.--': 'Y',
+        '--..': 'Z', '-----': '0', '.----': '1', '..---': '2',
+        '...--': '3', '....-': '4', '.....': '5', '-....': '6',
+        '--...': '7', '---..': '8', '----.': '9'
+    }
+    
+    palabras = morse.strip().split("   ")  # 3 espacios = separación de palabras
+    texto = []
+    for palabra in palabras:
+        letras = palabra.split(" ")  # 1 espacio = separación de letras
+        texto.append("".join(MORSE_CODE_DICT.get(letra, '') for letra in letras))
+    return " ".join(texto)
