@@ -1,3 +1,4 @@
+import random
 class Games:
     def piedra_papel_tijera(self, jugador1, jugador2):
         
@@ -41,7 +42,6 @@ class Games:
             return "muy bajo"
     
     def ta_te_ti_ganador(self, tablero):
-        
         # 1. Revisar Filas
         for fila in tablero:
             if fila[0] == fila[1] == fila[2] and fila[0] != " ":
@@ -53,36 +53,27 @@ class Games:
                 return tablero[0][col]
 
         # 3. Revisar Diagonales
-        # Diagonal principal (\)
         if tablero[0][0] == tablero[1][1] == tablero[2][2] and tablero[0][0] != " ":
             return tablero[0][0]
-        # Diagonal secundaria (/)
         if tablero[0][2] == tablero[1][1] == tablero[2][0] and tablero[0][2] != " ":
             return tablero[0][2]
 
-        # 4. Si no hay ganador, verificar si hay empate o si el juego sigue
+        # 4. REVISAR SI EL JUEGO SIGUE (Solo si nadie ganó arriba)
+        # Si hay un solo espacio vacío, el juego aún no termina
         for fila in tablero:
             if " " in fila:
                 return "continua"
 
+        # 5. Si el tablero está lleno y nadie ganó
         return "empate"
     
     def generar_combinacion_mastermind(self, longitud, colores_disponibles):
         """
         Genera una combinación aleatoria para el juego Mastermind.
-        
-        Args:
-            longitud (int): Número de posiciones en la combinación
-            colores_disponibles (list): Lista de colores disponibles
-            
-        Returns:
-            list: Combinación de colores de la longitud especificada
-            
-        Ejemplo:
-            generar_combinacion_mastermind(4, ["rojo", "azul", "verde"]) 
-            -> ["rojo", "azul", "rojo", "verde"]
         """
-        pass
+        # Usamos random.choices para permitir que los colores se repitan
+        # tal como muestra el ejemplo ["rojo", "azul", "rojo", "verde"]
+        return random.choices(colores_disponibles, k=longitud)
     
     def validar_movimiento_torre_ajedrez(self, desde_fila, desde_col, hasta_fila, hasta_col, tablero):
         """
