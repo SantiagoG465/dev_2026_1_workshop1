@@ -44,46 +44,53 @@ class Conversion:
         resultado = ""
         
         for valor, simbolo in valores:
-            # Mientras el número sea mayor o igual al valor actual, agregamos el símbolo
+            
             while numero >= valor:
                 resultado += simbolo
                 numero -= valor
                 
         return resultado
+
+def romano_a_decimal(self, romano):
+    valores = {
+        'I': 1, 'V': 5, 'X': 10, 'L': 50,
+        'C': 100, 'D': 500, 'M': 1000
+    }
     
-    def romano_a_decimal(self, romano):
-        """
-        Convierte un número romano a decimal.
+    total = 0
+    valor_anterior = 0
+    
+    for letra in reversed(romano):
+        valor_actual = valores[letra]
         
-        Args:
-            romano (str): Número romano válido
+        if valor_actual >= valor_anterior:
+            total += valor_actual
+        else:
+            total -= valor_actual
             
-        Returns:
-            int: Número decimal
-            
-        Ejemplo:
-            romano_a_decimal("IX") -> 9
-            romano_a_decimal("MCMXCIV") -> 1994
-        """
-        pass
-    
-    def texto_a_morse(self, texto):
-        """
-        Convierte texto a código Morse.
+        valor_anterior = valor_actual
         
-        Args:
-            texto (str): Texto a convertir (letras y números)
-            
-        Returns:
-            str: Código Morse separado por espacios
-            
-        Ejemplo:
-            texto_a_morse("SOS") -> "... --- ..."
-            texto_a_morse("HELLO") -> ".... . .-.. .-.. ---"
-        """
-        pass
+    return total
+
+def texto_a_morse(self, texto):
+    morse_map = {
+        'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
+        'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
+        'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
+        'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+        'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--',
+        '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
+        '9': '----.', '0': '-----', ' ': '/'
+    }
     
-    def morse_a_texto(self, morse):
+    resultado = []
+    for caracter in texto.upper():
+        if caracter in morse_map:
+            resultado.append(morse_map[caracter])
+    
+    return " ".join(resultado)
+
+def morse_a_texto(self, morse):
         """
         Convierte código Morse a texto.
         
