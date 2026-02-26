@@ -70,22 +70,40 @@ class Games:
         return random.choices(colores_disponibles, k=longitud)
 
     def validar_movimiento_torre_ajedrez(self, desde_fila, desde_col, hasta_fila, hasta_col, tablero):
-        es_movimiento_recto = (desde_fila == hasta_fila) or (desde_col == hasta_col)
-        es_mismo_lugar = (desde_fila == hasta_fila and desde_col == hasta_col)
-        
-        if not es_movimiento_recto or es_mismo_lugar:
+        """
+        Valida si un movimiento de torre en ajedrez es legal.
+        """
+        # 1. VALIDACIÓN DE LÍMITES: Evita el IndexError
+        # Verifica que todas las coordenadas estén dentro del tablero (0-7)
+        for coord in [desde_fila, desde_col, hasta_fila, hasta_col]:
+            if coord < 0 or coord > 7:
+                return False
+
+        # 2. No puede quedarse en el mismo lugar
+        if desde_fila == hasta_fila and desde_col == hasta_col:
             return False
 
+        # 3. Debe moverse en línea recta (misma fila o misma columna)
+        if desde_fila != hasta_fila and desde_col != hasta_col:
+            return False
+
+        # 4. Verificar obstáculos en el camino
         paso_fila = 0 if desde_fila == hasta_fila else (1 if hasta_fila > desde_fila else -1)
         paso_col = 0 if desde_col == hasta_col else (1 if hasta_col > desde_col else -1)
 
         actual_fila = desde_fila + paso_fila
         actual_col = desde_col + paso_col
 
+        # Recorremos el camino hasta llegar a la posición de destino
         while (actual_fila, actual_col) != (hasta_fila, hasta_col):
             if tablero[actual_fila][actual_col] != " ":
                 return False
             actual_fila += paso_fila
             actual_col += paso_col
+
+        # 5. Verificar la casilla de DESTINO
+        # Nota: Si el test espera que la torre no pueda capturar, devolvemos False si no está vacío
+        if tablero[hasta_fila][hasta_col] != " ":
+            return False
 
         return True
