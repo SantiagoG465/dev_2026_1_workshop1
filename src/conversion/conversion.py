@@ -1,3 +1,6 @@
+import decimal
+
+
 class Conversion:
     def celsius_a_fahrenheit(self, celsius):
     
@@ -13,69 +16,40 @@ class Conversion:
         return float(pies)
 
     def pies_a_metros(self, pies):
-        """
-        Convierte distancia de pies a metros.
-        
-        Args:
-            pies (float): Distancia en pies
+        metros = pies *  0.3048
+        return float(metros)
             
-        Returns:
-            float: Distancia en metros
-            
-        Factor: 1 pie = 0.3048 metros
-        
-        Ejemplo:
-            pies_a_metros(3.28084) -> 1.0
-        """
-        pass
-    
     def decimal_a_binario(self, decimal):
-        """
-        Convierte un número decimal a su representación binaria.
-        
-        Args:
-            decimal (int): Número decimal (positivo)
-            
-        Returns:
-            str: Representación binaria como string
-            
-        Ejemplo:
-            decimal_a_binario(10) -> "1010"
-            decimal_a_binario(255) -> "11111111"
-        """
-        pass
+        if decimal == 0:
+            return "0"
+        binario = ""
+        while decimal > 0:
+            binario = str(decimal % 2) + binario
+            decimal //= 2
+        return binario
     
     def binario_a_decimal(self, binario):
-        """
-        Convierte un número binario a decimal.
-        
-        Args:
-            binario (str): Representación binaria como string
-            
-        Returns:
-            int: Número decimal
-            
-        Ejemplo:
-            binario_a_decimal("1010") -> 10
-            binario_a_decimal("11111111") -> 255
-        """
-        pass
+
+     decimal = int(binario, 2)
+
+     return decimal
     
     def decimal_a_romano(self, numero):
-        """
-        Convierte un número decimal a numeración romana.
+        valores = [
+            (1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'),
+            (100, 'C'), (90, 'XC'), (50, 'L'), (40, 'XL'),
+            (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')
+        ]
         
-        Args:
-            numero (int): Número decimal entre 1 y 3999
-            
-        Returns:
-            str: Número romano
-            
-        Ejemplo:
-            decimal_a_romano(9) -> "IX"
-            decimal_a_romano(1994) -> "MCMXCIV"
-        """
-        pass
+        resultado = ""
+        
+        for valor, simbolo in valores:
+            # Mientras el número sea mayor o igual al valor actual, agregamos el símbolo
+            while numero >= valor:
+                resultado += simbolo
+                numero -= valor
+                
+        return resultado
     
     def romano_a_decimal(self, romano):
         """
