@@ -61,25 +61,21 @@ class Data:
         return lista[-k:] + lista[:-k]
     
     def encuentra_numero_faltante(self, lista):
-        """
-        Encuentra el número faltante en una lista de enteros del 1 al n.
-        """
-        # n es la longitud de la lista + 1 (porque falta un número)
+        
+        # n es el rango total (elementos presentes + el que falta)
         n = len(lista) + 1
         
-        # Suma teórica que debería tener la lista del 1 al n
+        # Suma teórica usando la fórmula: (n * (n + 1)) / 2
         suma_teorica = (n * (n + 1)) // 2
         
-        # Suma real de los elementos presentes
+        # Suma real de lo que tenemos en la lista
         suma_real = sum(lista)
         
-        # La diferencia es el número que falta
-        return suma_teorica - suma_real 
+        # El faltante es la diferencia
+        return suma_teorica - suma_real
     
     def es_subconjunto(self, conjunto1, conjunto2):
-        """
-        Verifica si conjunto1 es subconjunto de conjunto2 sin usar set.
-        """
+        
         # Recorremos cada elemento del posible subconjunto
         for elemento in conjunto1:
             # Si un elemento de conjunto1 NO está en conjunto2, no es subconjunto
@@ -90,13 +86,32 @@ class Data:
         return True
     
     def implementar_pila(self):
-        """
-        Implementa una estructura de datos tipo pila (stack) usando listas.
         
-        Returns:
-            dict: Diccionario con métodos push, pop, peek y is_empty
-        """
-        pass
+        pila = []
+
+        def push(elemento):
+            pila.append(elemento)
+
+        def pop():
+            if pila:
+                return pila.pop()
+            return None
+
+        def peek():
+            if pila:
+                return pila[-1]
+            return None
+
+        def is_empty():
+            return len(pila) == 0
+
+        return {
+            "push": push,
+            "pop": pop,
+            "peek": peek,
+            "is_empty": is_empty
+        }
+
     
     def implementar_cola(self):
         """
