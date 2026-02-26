@@ -1,21 +1,22 @@
 class Games:
     def piedra_papel_tijera(self, jugador1, jugador2):
-        """
-        Determina el ganador del juego piedra, papel o tijera.
+    
+        # 1. Caso de empate (Importante: debe devolver el string "empate")
+        if jugador1 == jugador2:
+            return "empate"
+            
+        # 2. Diccionario de reglas: llave gana a valor
+        reglas = {
+            "piedra": "tijera",
+            "tijera": "papel",
+            "papel": "piedra"
+        }
         
-        Args:
-            jugador1 (str): Elección del jugador 1 ("piedra", "papel", "tijera")
-            jugador2 (str): Elección del jugador 2 ("piedra", "papel", "tijera")
-            
-        Returns:
-            str: "jugador1", "jugador2" o "empate"
-            
-        Reglas:
-            - Piedra vence a tijera
-            - Tijera vence a papel
-            - Papel vence a piedra
-        """
-        pass
+        # 3. Lógica de victoria
+        if reglas[jugador1] == jugador2:
+            return "jugador1"
+        else:
+            return "jugador2"
     
     def adivinar_numero_pista(self, numero_secreto, intento):
         """
