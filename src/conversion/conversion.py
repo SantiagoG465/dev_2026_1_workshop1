@@ -1,57 +1,17 @@
 class Conversion:
     def celsius_a_fahrenheit(self, celsius):
-        """
-        Convierte temperatura de Celsius a Fahrenheit.
-        
-        Args:
-            celsius (float): Temperatura en grados Celsius
-            
-        Returns:
-            float: Temperatura en grados Fahrenheit
-            
-        Fórmula: F = (C × 9/5) + 32
-        
-        Ejemplo:
-            celsius_a_fahrenheit(0) -> 32.0
-            celsius_a_fahrenheit(100) -> 212.0
-        """
-        pass
+    
+        fahrenheit = (celsius * 9/5) + 32
+        return float(fahrenheit)
     
     def fahrenheit_a_celsius(self, fahrenheit):
-        """
-        Convierte temperatura de Fahrenheit a Celsius.
-        
-        Args:
-            fahrenheit (float): Temperatura en grados Fahrenheit
-            
-        Returns:
-            float: Temperatura en grados Celsius
-            
-        Fórmula: C = (F - 32) × 5/9
-        
-        Ejemplo:
-            fahrenheit_a_celsius(32) -> 0.0
-            fahrenheit_a_celsius(212) -> 100.0
-        """
-        pass
+        celsius = (fahrenheit - 32) * 5/9
+        return float(celsius)
     
     def metros_a_pies(self, metros):
-        """
-        Convierte distancia de metros a pies.
-        
-        Args:
-            metros (float): Distancia en metros
-            
-        Returns:
-            float: Distancia en pies
-            
-        Factor: 1 metro = 3.28084 pies
-        
-        Ejemplo:
-            metros_a_pies(1) -> 3.28084
-        """
-        pass
-    
+        pies = metros * 3.28084
+        return float(pies)
+
     def pies_a_metros(self, pies):
         """
         Convierte distancia de pies a metros.
