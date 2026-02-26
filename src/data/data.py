@@ -16,12 +16,18 @@ class Data:
         return -1  
     
     def eliminar_duplicados(self, lista):
-        if not lista: 
-            return []
-  
+        
         lista_unica = []
+        
         for elemento in lista:
-            if elemento not in lista_unica:
+            # Verificamos si existe un elemento con el mismo VALOR y mismo TIPO
+            ya_existe = False
+            for unico in lista_unica:
+                if unico == elemento and type(unico) == type(elemento):
+                    ya_existe = True
+                    break
+            
+            if not ya_existe:
                 lista_unica.append(elemento)
                 
         return lista_unica
@@ -56,8 +62,12 @@ class Data:
     def rotar_lista(self, lista, k):
         if not lista:
             return lista
-        n = not len(lista)
-        k = k % n
+        
+        n = len(lista)  # <--- Quitamos el "not"
+        k = k % n       # Ahora n es 5, no 0.
+        
+        # Para rotar a la derecha:
+        # Tomamos los últimos 'k' elementos y los ponemos al inicio
         return lista[-k:] + lista[:-k]
     
     def encuentra_numero_faltante(self, lista):
