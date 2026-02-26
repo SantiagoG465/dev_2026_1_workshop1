@@ -16,20 +16,23 @@ class Data:
         return -1  
     
     def eliminar_duplicados(self, lista):
+        if not lista: 
+            return []
+  
         lista_unica = []
-        
         for elemento in lista:
-           
             if elemento not in lista_unica:
                 lista_unica.append(elemento)
                 
         return lista_unica
     
     def merge_ordenado(self, lista1, lista2):
+        
         combinada = []
-        i = 0  # Idice para lista1
-        j = 0  # Idice para lista2
+        i = 0  # Índice para lista1
+        j = 0  # Índice para lista2
 
+    
         while i < len(lista1) and j < len(lista2):
             if lista1[i] < lista2[j]:
                 combinada.append(lista1[i])
@@ -38,15 +41,17 @@ class Data:
                 combinada.append(lista2[j])
                 j += 1
 
+        # Agregamos lo que sobre de la lista1
         while i < len(lista1):
             combinada.append(lista1[i])
             i += 1
     
+        # Agregamos lo que sobre de la lista2
         while j < len(lista2):
             combinada.append(lista2[j])
             j += 1
 
-        return combinada
+        return combinada  
     
     def rotar_lista(self, lista, k):
         if not lista:
