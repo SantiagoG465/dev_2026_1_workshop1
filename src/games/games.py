@@ -1,52 +1,71 @@
 class Games:
     def piedra_papel_tijera(self, jugador1, jugador2):
-    
-        # 1. Caso de empate (Importante: debe devolver el string "empate")
-        if jugador1 == jugador2:
+        
+        # 1. Convertimos a minúsculas para manejar "PIEDRA" o "Papel"
+        j1 = str(jugador1).lower()
+        j2 = str(jugador2).lower()
+        
+        # 2. Definimos las opciones válidas
+        opciones_validas = ["piedra", "papel", "tijera"]
+        
+        # 3. Si alguna opción no es válida, devolvemos "invalid" como pide el test
+        if j1 not in opciones_validas or j2 not in opciones_validas:
+            return "invalid"
+            
+        # 4. Caso de empate
+        if j1 == j2:
             return "empate"
             
-        # 2. Diccionario de reglas: llave gana a valor
+        # 5. Diccionario de reglas
         reglas = {
             "piedra": "tijera",
             "tijera": "papel",
             "papel": "piedra"
         }
         
-        # 3. Lógica de victoria
-        if reglas[jugador1] == jugador2:
+        # 6. Lógica de victoria
+        if reglas[j1] == j2:
             return "jugador1"
         else:
             return "jugador2"
-    
+        
     def adivinar_numero_pista(self, numero_secreto, intento):
         """
         Proporciona pistas para un juego de adivinanza de números.
-        
-        Args:
-            numero_secreto (int): El número que se debe adivinar
-            intento (int): El número propuesto por el jugador
-            
-        Returns:
-            str: "correcto", "muy alto" o "muy bajo"
         """
-        pass
+        if intento == numero_secreto:
+            return "correcto"
+        elif intento > numero_secreto:
+            return "muy alto"
+        else:
+            return "muy bajo"
     
     def ta_te_ti_ganador(self, tablero):
-        """
-        Verifica si hay un ganador en un tablero de tic-tac-toe.
         
-        Args:
-            tablero (list): Matriz 3x3 con valores "X", "O" o " " (espacio vacío)
-            
-        Returns:
-            str: "X", "O", "empate" o "continua"
-            
-        Ejemplo:
-            [["X", "X", "X"],
-             ["O", "O", " "],
-             [" ", " ", " "]] -> "X"
-        """
-        pass
+        # 1. Revisar Filas
+        for fila in tablero:
+            if fila[0] == fila[1] == fila[2] and fila[0] != " ":
+                return fila[0]
+
+        # 2. Revisar Columnas
+        for col in range(3):
+            if tablero[0][col] == tablero[1][col] == tablero[2][col] and tablero[0][col] != " ":
+                return tablero[0][col]
+
+        # 3. Revisar Diagonales
+        # Diagonal principal (\)
+        if tablero[0][0] == tablero[1][1] == tablero[2][2] and tablero[0][0] != " ":
+            return tablero[0][0]
+        # Diagonal secundaria (/)
+        if tablero[0][2] == tablero[1][1] == tablero[2][0] and tablero[0][2] != " ":
+            return tablero[0][2]
+
+        # 4. Si no hay ganador, verificar si hay empate o si el juego sigue
+        for fila in tablero:
+            if " " in fila:
+                return "continua"
+
+        return "empate"
     
     def generar_combinacion_mastermind(self, longitud, colores_disponibles):
         """
