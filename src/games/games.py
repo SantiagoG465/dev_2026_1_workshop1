@@ -63,12 +63,12 @@ class Games:
         if tablero[0][2] == tablero[1][1] == tablero[2][0] and tablero[0][2] != " ":
             return tablero[0][2]
 
-        # 4. Si nadie ganó, revisar si el juego sigue (¿hay algún espacio vacío?)
+        # 4. Si nadie ganó, ¿quedan espacios vacíos?
         for fila in tablero:
             if " " in fila:
                 return "continua"
 
-        # 5. Si no hay ganadores y el tablero está lleno
+        # 5. Si no hay ganador y el tablero está lleno
         return "empate"
 
     def generar_combinacion_mastermind(self, longitud, colores_disponibles):
