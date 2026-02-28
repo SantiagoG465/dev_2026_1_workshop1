@@ -63,7 +63,9 @@ class Geometria:
         return 6 * lado
     
     def volumen_cubo(self, lado):
-        return lado ** 3 
+        if lado < 0:
+            return 0
+        return lado ** 3
        
     def area_superficie_cubo(self, lado):
         return 6 * lado ** 2
