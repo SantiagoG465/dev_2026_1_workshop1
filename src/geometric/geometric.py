@@ -1,34 +1,26 @@
+from email.mime import base
+
+
 class Geometria:
     """
     Class with geometric exercises.
     Include basic and funny operations in 2D and 3D.
     """
     
-    def area_rectangulo(self, base, altura):
-        """
-        Calcula el área de un rectángulo.
+    def area_rectangulo_divertida(self, base, altura):
+        if base <= 0 or altura <= 0:
+            return "¡Eso no es un rectángulo, es un agujero negro!"
         
-        Args:
-            base (float): Longitud de la base del rectángulo
-            altura (float): Altura del rectángulo
-            
-        Returns:
-            float: Área del rectángulo
-        """
-        return base*altura
+        area = base * altura
+        if area > 1000:
+            return f"{area} - ¡Vaya, eso es un terreno digno de una mansión!"
+        return area
     
     def perimetro_rectangulo(self, base, altura):
-        """
-        Calcula el perímetro de un rectángulo.
-        
-        Args:
-            base (float): Longitud de la base del rectángulo
-            altura (float): Altura del rectángulo
-            
-        Returns:
-            float: Perímetro del rectángulo
-        """
-        pass
+        p = 2 * (base + altura)
+        if  p > 100:
+            return
+        return p
     
     def area_circulo(self, radio):
         """
