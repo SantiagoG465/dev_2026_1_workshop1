@@ -2,19 +2,12 @@ from email.mime import base
 
 
 class Geometria:
-    """
-    Class with geometric exercises.
-    Include basic and funny operations in 2D and 3D.
-    """
     
     def area_rectangulo(self, base, altura):
-        if base <= 0 or altura <= 0:
-            return "¡Eso no es un rectángulo, es un agujero negro!"
-        
-        area = base * altura
-        if area > 1000:
-            return f"{area} - ¡Vaya, eso es un terreno digno de una mansión!"
-        return area
+        # Validación: Si alguno es menor a 0, retorna 0 según tus tests
+        if base < 0 or altura < 0:
+            return 0
+        return float(base * altura)
     
     def perimetro_rectangulo(self, base, altura):
         p = 2 * (base + altura)
