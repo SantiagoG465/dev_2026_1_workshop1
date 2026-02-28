@@ -16,55 +16,28 @@ class Geometria:
         return p
     
     def area_circulo(self, radio):
-        """
-        Calcula el área de un círculo.
-        
-        Args:
-            radio (float): Radio del círculo
-            
-        Returns:
-            float: Área del círculo
-        """
-        pass
+         pi = 3.1416
+         if radio < 0:
+             return 0
+         return round(pi * radio ** 2, 2)
     
+
     def perimetro_circulo(self, radio):
-        """
-        Calcula el perímetro (circunferencia) de un círculo.
-        
-        Args:
-            radio (float): Radio del círculo
-            
-        Returns:
-            float: Perímetro del círculo
-        """
-        pass
+        pi = 3.1416
+        if radio < 0:
+            return 0
+        return round(2 * pi * radio, 2)
     
     def area_triangulo(self, base, altura):
-        """
-        Calcula el área de un triángulo.
+        return 0.5 * base * altura
         
-        Args:
-            base (float): Longitud de la base del triángulo
-            altura (float): Altura del triángulo
-            
-        Returns:
-            float: Área del triángulo
-        """
-        pass
-    
     def perimetro_triangulo(self, lado1, lado2, lado3):
-        """
-        Calcula el perímetro de un triángulo.
+        return lado1 + lado2 + lado3
         
-        Args:
-            lado1 (float): Longitud del primer lado
-            lado2 (float): Longitud del segundo lado
-            lado3 (float): Longitud del tercer lado
-            
-        Returns:
-            float: Perímetro del triángulo
-        """
-        pass
+        p = lado1 + lado2 + lado3
+        if p > 100:
+            return 0
+        return p
     
     def es_triangulo_valido(self, lado1, lado2, lado3):
         """
