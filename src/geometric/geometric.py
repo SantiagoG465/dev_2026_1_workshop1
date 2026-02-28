@@ -50,7 +50,6 @@ class Geometria:
     def area_rombo(self, diagonal_mayor, diagonal_menor):
         return 0.5 * diagonal_mayor * diagonal_menor
     
-
     def area_pentagono_regular(self, lado, apotema):
         return 0.5 * 5 * lado * apotema
     
@@ -70,29 +69,13 @@ class Geometria:
         return 6 * lado ** 2
     
     def volumen_esfera(self, radio):
-        """
-        Calcula el volumen de una esfera.
-        
-        Args:
-            radio (float): Radio de la esfera
-            
-        Returns:
-            float: Volumen de la esfera
-        """
-        pass
+        pi = 3.1416
+        return round((4/3) * pi * radio ** 3, 2)
     
     def area_superficie_esfera(self, radio):
-        """
-        Calcula el área de la superficie de una esfera.
+        pi = 3.1416
+        return round(4 * pi * radio ** 2, 2)
         
-        Args:
-            radio (float): Radio de la esfera
-            
-        Returns:
-            float: Área de la superficie de la esfera
-        """
-        pass
-    
     def volumen_cilindro(self, radio, altura):
         """
         Calcula el volumen de un cilindro.
