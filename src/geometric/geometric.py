@@ -90,17 +90,19 @@ class Geometria:
         return round(((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5, 2)
     
     def punto_medio(self, x1, y1, x2, y2):
-        return (round((x1 + x2) / 2, 2), round((y1 + y2) / 2, 2))
-    
+        xm = (x1 + x2) / 2
+        ym = (y1 + y2) / 2
+        return (round(xm, 2), round(ym, 2))
+        
     def pendiente_recta(self, x1, y1, x2, y2):
-        if x2 == x1:
-            if y2 == y1:
-                return "Puntos coincidentes"  # No es una recta, es un punto
-        return float((y2 - y1) / (x2 - x1)) if x2 != x1 else float('inf')
-        if  y2  == y1:
-            return 0.0  # Pendiente horizontal
-        m = (y2 - y1) / (x2 - x1)
-        return round(m, 2)
+        if x2 - x1 == 0:
+            return "Puntos coincidientes"
+        if x1 == x2:
+            return float    ('inf')  # Pendiente infinita para línea vertical
+        if y1 == y2:
+            return 0.0
+        m= (y2 - y1) / (x2 - x1)
+        return round(float  (m), 2)
     
     def area_poligono_regular(self, num_lados, longitud_lado, apotema):
         perimetro = num_lados * longitud_lado
