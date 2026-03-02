@@ -69,14 +69,17 @@ class Magic:
         return triangulo
     
     def factorial(self, n):
-       if n < 0:
-           return None
-       if   n == 0 or n == 1:
-           return 1
-       resultado = 1
-       for i in range(2, n + 1):
-           resultado *= i
-           return resultado
+        if n < 0:
+            return None
+        if n == 0 or n == 1:
+            return 1
+            
+        resultado = 1
+        for i in range(2, n + 1):
+            resultado *= i
+        
+        # EL SECRETO ESTÁ AQUÍ: Debe estar FUERA del for
+        return resultado
     
     def mcd(self, a, b):
         a, b = abs(a), abs(b)
