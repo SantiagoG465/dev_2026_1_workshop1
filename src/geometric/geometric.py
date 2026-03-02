@@ -93,19 +93,18 @@ class Geometria:
         return (round((x1 + x2) / 2, 2), round((y1 + y2) / 2, 2))
     
     def pendiente_recta(self, x1, y1, x2, y2):
-        if x2 - x1 == 0:  # Evitar división por cero (recta vertical)
-            return None  # Pendiente indefinida
-        return round((y2 - y1) / (x2 - x1), 2)
+        if x2 == x1:
+            if y2 == y1:
+                return "Puntos coincidentes"  # No es una recta, es un punto
+        return float((y2 - y1) / (x2 - x1)) if x2 != x1 else float('inf')
+        if  y2  == y1:
+            return 0.0  # Pendiente horizontal
+        m = (y2 - y1) / (x2 - x1)
+        return round(m, 2)
     
-    def ecuacion_recta(self, x1, y1, x2, y2):
-        if x2 - x1 == 0:  # Evitar división por cero (recta vertical)
-            return f"x = {x1}"  # Ecuación de una recta vertical
-        m = self.pendiente_recta(x1, y1, x2, y2)
-        b = round(y1 - m * x1, 2)
-        return f"y = {m}x + {b}"
-    
-    def area_poligono_regular(self, num_lados, lado, apotema):
-        return 0.5 * num_lados * lado * apotema
+    def area_poligono_regular(self, num_lados, longitud_lado, apotema):
+        perimetro = num_lados * longitud_lado
+        return 0.5 * perimetro * apotema
     
     def perimetro_poligono_regular(self, num_lados, lado):
         return num_lados * lado
