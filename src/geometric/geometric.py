@@ -98,43 +98,14 @@ class Geometria:
         return round((y2 - y1) / (x2 - x1), 2)
     
     def ecuacion_recta(self, x1, y1, x2, y2):
-        """
-        Obtiene los coeficientes de la ecuación de una recta en la forma Ax + By + C = 0.
-        
-        Args:
-            x1 (float): Coordenada x del primer punto
-            y1 (float): Coordenada y del primer punto
-            x2 (float): Coordenada x del segundo punto
-            y2 (float): Coordenada y del segundo punto
-            
-        Returns:
-            tuple: Coeficientes (A, B, C) de la ecuación de la recta
-        """
-        pass
+        if x2 - x1 == 0:  # Evitar división por cero (recta vertical)
+            return f"x = {x1}"  # Ecuación de una recta vertical
+        m = self.pendiente_recta(x1, y1, x2, y2)
+        b = round(y1 - m * x1, 2)
+        return f"y = {m}x + {b}"
     
     def area_poligono_regular(self, num_lados, lado, apotema):
-        """
-        Calcula el área de un polígono regular.
-        
-        Args:
-            num_lados (int): Número de lados del polígono
-            lado (float): Longitud de cada lado
-            apotema (float): Longitud de la apotema
-            
-        Returns:
-            float: Área del polígono regular
-        """
-        pass
+        return 0.5 * num_lados * lado * apotema
     
     def perimetro_poligono_regular(self, num_lados, lado):
-        """
-        Calcula el perímetro de un polígono regular.
-        
-        Args:
-            num_lados (int): Número de lados del polígono
-            lado (float): Longitud de cada lado
-            
-        Returns:
-            float: Perímetro del polígono regular
-        """
-        pass
+        return num_lados * lado
