@@ -95,14 +95,21 @@ class Geometria:
         return (round(xm, 2), round(ym, 2))
         
     def pendiente_recta(self, x1, y1, x2, y2):
-        if x2 - x1 == 0:
-            return "Puntos coincidientes"
+    # 1. Caso crítico: Los puntos son el mismo
+        if x1 == x2 and y1 == y2:
+            return "Puntos coincidentes"
+    
+    # 2. Caso vertical: División por cero
         if x1 == x2:
-            return float    ('inf')  # Pendiente infinita para línea vertical
+         return float('inf')
+    
+    # 3. Caso horizontal: Pendiente cero (opcional pero más claro)
         if y1 == y2:
-            return 0.0
-        m= (y2 - y1) / (x2 - x1)
-        return round(float  (m), 2)
+         return 0.0
+        
+    # 4. Cálculo general con redondeo
+        m = (y2 - y1) / (x2 - x1)
+        return round(float(m), 2)
     
     def area_poligono_regular(self, num_lados, longitud_lado, apotema):
         perimetro = num_lados * longitud_lado
