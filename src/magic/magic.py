@@ -3,16 +3,13 @@ class Magic:
     def fibonacci(self, n):
         if n <= 0:
             return []
-        elif n == 1:
+        if n == 1:  
             return [0]
-        elif n == 2:
-            return [0, 1]
-        else:
-            secuencia = [0, 1]
-            for i in range(2, n):
-                siguiente = secuencia[i-1] + secuencia[i-2]
-                secuencia.append(siguiente)
-            return secuencia
+        sequence = [0, 1]
+        while   len(sequence) < n:
+            next_value = sequence[-1] + sequence[-2]
+            sequence.append(next_value)
+            return sequence
     
     def secuencia_fibonacci(self, n):
         if n <= 0:
@@ -37,40 +34,30 @@ class Magic:
         return True
     
     def generar_primos(self, n):
-        """
-        Genera una lista de números primos hasta n.
-        
-        Args:
-            n (int): Límite superior para generar primos
-            
-        Returns:
-            list: Lista de números primos hasta n
-        """
-        pass
+        primos = []
+        num = 2
+        while len(primos) < n:
+            if self.es_primo(num):
+                primos.append(num)
+            num += 1
+        return primos
     
     def es_numero_perfecto(self, n):
-        """
-        Verifica si un número es perfecto (igual a la suma de sus divisores propios).
-        
-        Args:
-            n (int): Número a verificar
-            
-        Returns:
-            bool: True si n es un número perfecto, False en caso contrario
-        """
-        pass
+        if n < 1:
+            return False
+        suma_divisores = sum(i for i in range(1, n) if n % i == 0)
+        return suma_divisores == n
     
     def triangulo_pascal(self, filas):
-        """
-        Genera las primeras n filas del triángulo de Pascal.
-        
-        Args:
-            filas (int): Número de filas a generar
-            
-        Returns:
-            list: Lista de listas que representa el triángulo de Pascal
-        """
-        pass
+        if filas <= 0:
+            return []
+        triangulo = []
+        for i in range(filas):
+            fila = [1] * (i + 1)
+            for j in range(1, i):
+                fila[j] = triangulo[i-1][j-1] + triangulo[i-1][j]
+            triangulo.append(fila)
+        return triangulo
     
     def factorial(self, n):
         """
