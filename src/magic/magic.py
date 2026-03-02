@@ -46,13 +46,11 @@ class Magic:
         
     def generar_primos(self, n):
         primos = []
-        num = 2
-        while len(primos) < n:
+        for num in range(2, n + 1):
             if self.es_primo(num):
                 primos.append(num)
-            num += 1
-        return primos
-    
+        return primos  
+            
     def es_numero_perfecto(self, n):
         if n < 1:
             return False
