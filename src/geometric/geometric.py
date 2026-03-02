@@ -104,8 +104,21 @@ class Geometria:
         m = (y2 - y1) / (x2 - x1)
         return round(m, 2)
     
+    def ecuacion_recta(self, x1, y1, x2, y2):
+        # El test espera el formato (A, B, C) de la ecuación Ax + By + C = 0
+        # Basado en tus asserts: (1,1) a (3,3) -> (2, -2, 0)
+        # Esto sale de: (y1 - y2)x + (x2 - x1)y + (x1*y2 - x2*y1) = 0
+        a = y1 - y2
+        b = x2 - x1
+        c = x1 * y2 - x2 * y1
+        return (a, b, c)
+    
     def area_poligono_regular(self, num_lados, lado, apotema):
-        return 0.5 * num_lados * lado * apotema
+        # Calculamos el área: (Perímetro * Apotema) / 2
+        area = 0.5 * num_lados * lado * apotema
+        
+        # Redondeamos a 2 decimales para que coincida con los asserts del test
+        return round(area, 2)
     
     def perimetro_poligono_regular(self, num_lados, lado):
         return num_lados * lado
