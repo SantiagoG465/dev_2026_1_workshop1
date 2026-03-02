@@ -1,16 +1,20 @@
 class Magic:
     def fibonacci(self, n):
-        if n <= 0:
-            return []
-        if n == 1:  
-            return [0]
-        
+        # El test pide específicamente None para entradas negativas
+        if n < 0:
+            return None
+        # Para 0, el test espera 0
+        if n == 0:
+            return 0
+        if n == 1:
+            return 1
+            
         sequence = [0, 1]
-        while len(sequence) < n:
-            next_value = sequence[-1] + sequence[-2]
+        for i in range(2, n + 1):
+            next_value = sequence[i - 1] + sequence[i - 2]
             sequence.append(next_value)
         
-        return sequence  # Asegúrate de que el return esté alineado con el while
+        return sequence[n]
     
     def secuencia_fibonacci(self, n):
         if n <= 0:
@@ -33,10 +37,12 @@ class Magic:
             return True
         if n % 2 == 0:
             return False
+            
         for i in range(3, int(n**0.5) + 1, 2):
             if n % i == 0:
-                return False    
-            return True 
+                return False 
+        
+        return True
         
     def generar_primos(self, n):
         primos = []
