@@ -50,20 +50,16 @@ class Matrix:
         return resultado
 
     def transpuesta(self, matriz):
-        """
-        Calcula la transpuesta de una matriz (intercambia filas por columnas).
-
-        Args:
-            matriz (list): Matriz (lista de listas)
-
-        Returns:
-            list: Matriz transpuesta
-
-        Ejemplo:
-            transpuesta([[1, 2, 3], [4, 5, 6]]) -> [[1, 4], [2, 5], [3, 6]]
-        """
-        pass
-
+        filas = len(matriz)
+        columnas = len(matriz[0])
+        resultado = []
+        for j in range(columnas):
+            fila_transpuesta = []
+            for i in range(filas):
+                fila_transpuesta.append(matriz[i][j])
+            resultado.append(fila_transpuesta)  
+        return resultado
+    
     def es_cuadrada(self, matriz):
         """
         Verifica si una matriz es cuadrada (mismo número de filas y columnas).
