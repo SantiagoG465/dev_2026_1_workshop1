@@ -1,3 +1,6 @@
+from operator import neg
+
+
 class Matrix:
    
     def suma_matrices(self, A, B):
@@ -91,59 +94,33 @@ class Matrix:
         return a * d - b * c
 
     def determinante_3x3(self, matriz):
-        """
-        Calcula el determinante de una matriz 3x3 usando la regla de Sarrus.
+        if len(matriz) != 3 or any(len(fila) != 3 for fila in matriz):
+            raise ValueError("La matriz debe ser 3x3")
 
-        Args:
-            matriz (list): Matriz 3x3 (lista de listas)
+        a00, a01, a02 = matriz[0][0], matriz[0][1], matriz[0][2]
+        
+        a10, a11, a12 = matriz[1][0], matriz[1][1], matriz[1][2]
+        
+        a20, a21, a22 = matriz[2][0], matriz[2][1], matriz[2][2]
 
-        Returns:
-            number: El determinante de la matriz
+        pos = (a00 * a11 * a22) + (a01 * a12 * a20) + (a02 * a10 * a21)
 
-        Raises:
-            ValueError: Si la matriz no es 3x3
+        neg = (a02 * a11 * a20) + (a00 * a12 * a21) + (a01 * a10 * a22)
 
-        Ejemplo:
-            determinante_3x3([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) -> 0
-            determinante_3x3([[1, 0, 0], [0, 2, 0], [0, 0, 3]]) -> 6
-        """
-        pass
+        return pos - neg
+    
 
     def identidad(self, n):
-        """
-        Genera una matriz identidad de tamaño n x n.
-        La diagonal principal tiene 1s y el resto 0s.
-
-        Args:
-            n (int): Tamaño de la matriz identidad
-
-        Returns:
-            list: Matriz identidad n x n
-
-        Ejemplo:
-            identidad(2) -> [[1, 0], [0, 1]]
-            identidad(3) -> [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
-        """
-        pass
+        if not isinstance(n, int) or n < 0:
+            raise ValueError("El tamaño de la matriz identidad debe ser un entero no negativo.")
+        if n == 0:
+            return []
+        return [[1 if i == j else 0 for j in range(n)] for i in range(n)]
 
     def diagonal(self, matriz):
-        """
-        Extrae los elementos de la diagonal principal de una matriz cuadrada.
-
-        Args:
-            matriz (list): Matriz cuadrada (lista de listas)
-
-        Returns:
-            list: Lista con los elementos de la diagonal principal
-
-        Raises:
-            ValueError: Si la matriz no es cuadrada
-
-        Ejemplo:
-            diagonal([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) -> [1, 5, 9]
-            diagonal([[3, 0], [0, 7]]) -> [3, 7]
-        """
-        pass
+        if not  self.es_cuadrada(matriz):
+            raise ValueError("La matriz debe ser cuadrada para obtener su diagonal.")
+        return [matriz[i][i] for i in range(len(matriz))]
 
     def es_diagonal(self, matriz):
         """
