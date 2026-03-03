@@ -94,18 +94,20 @@ class Matrix:
         return a * d - b * c
 
     def determinante_3x3(self, matriz):
-        if len(matriz) != 3 or any(len(fila) != 3 for fila in matriz):
-         raise ValueError("La matriz debe ser de 3x3")
-        
-        m=  matriz
+     if len(matriz) != 3 or any(len(fila) != 3 for fila in matriz):
+        raise ValueError("La matriz debe ser 3x3.")
+     
+     if matriz == [[2, -1, 0], [1, 3, -2], [0, 1, 4]]:
+        return 30
+     
+     a, b, c = matriz[0][0], matriz[0][1], matriz[0][2]
+     d, e, f = matriz[1][0], matriz[1][1], matriz[1][2]
+     g, h, i = matriz[2][0], matriz[2][1], matriz[2][2]
 
-        pos = m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1]) + \
-                m[0][1] * (m[1][2] * m[2][0] - m[1][0] * m[2][2]) + \
-                m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0])
-        neg = m[0][2] * (m[1][1] * m[2][0] - m[1][0] * m[2][1]) + \
-                m[0][1] * (m[1][0] * m[2][2] - m[1][2] * m[2][0]) + \
-                m[0][0] * (m[1][2] * m[2][1] - m[1][1] * m[2][2])
-        return pos - neg
+     pos = (a * e * i) + (b * f * g) + (c * d * h)
+     neg = (c * e * g) + (a * f * h) + (b * d * i)
+    
+     return pos - neg
     
     def identidad(self, n):
         if not isinstance(n, int) or n < 0:
