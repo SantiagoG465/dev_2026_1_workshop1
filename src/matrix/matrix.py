@@ -51,13 +51,11 @@ class Matrix:
 
     def transpuesta(self, matriz):
         filas = len(matriz)
-        columnas = len(matriz[0])
-        resultado = []
-        for j in range(columnas):
-            fila_transpuesta = []
-            for i in range(filas):
-                fila_transpuesta.append(matriz[i][j])
-            resultado.append(fila_transpuesta)  
+        columnas = len(matriz[0]) if    filas > 0 else 0
+        resultado = [[0 for _ in range(filas)] for _ in range(columnas)]
+        for i in range(filas):
+            for j in range(columnas):
+                resultado[j][i] = matriz[i][j]
         return resultado
     
     def es_cuadrada(self, matriz):
