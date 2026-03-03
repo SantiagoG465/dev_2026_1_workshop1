@@ -1,22 +1,20 @@
 class Matrix:
    
     def suma_matrices(self, A, B):
-        suma = []
-        for i in range(len(A)):
+        self.suma_matrices = []
+        for i in range(len(A)):     
             fila_suma = []
             for j in range(len(A[0])):
                 fila_suma.append(A[i][j] + B[i][j])
-            suma.append(fila_suma)
-        return suma
-
+            self.suma_matrices.append(fila_suma)
+    
     def resta_matrices(self, A, B):
-        resta = []
-        for i in range(len(A)):
+        self.resta_matrices = []
+        for i in range(len(A)):     
             fila_resta = []
             for j in range(len(A[0])):
                 fila_resta.append(A[i][j] - B[i][j])
-            resta.append(fila_resta)
-        return resta
+            self.resta_matrices.append(fila_resta)
 
     def multiplicar_matrices(self, A, B):
         """
