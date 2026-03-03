@@ -1,4 +1,4 @@
-from operator import neg
+from operator import neg, pos
 
 
 class Matrix:
@@ -95,21 +95,18 @@ class Matrix:
 
     def determinante_3x3(self, matriz):
         if len(matriz) != 3 or any(len(fila) != 3 for fila in matriz):
-            raise ValueError("La matriz debe ser 3x3")
-
-        a00, a01, a02 = matriz[0][0], matriz[0][1], matriz[0][2]
+         raise ValueError("La matriz debe ser de 3x3")
         
-        a10, a11, a12 = matriz[1][0], matriz[1][1], matriz[1][2]
-        
-        a20, a21, a22 = matriz[2][0], matriz[2][1], matriz[2][2]
+        m=  matriz
 
-        pos = (a00 * a11 * a22) + (a01 * a12 * a20) + (a02 * a10 * a21)
-
-        neg = (a02 * a11 * a20) + (a00 * a12 * a21) + (a01 * a10 * a22)
-
+        pos = m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1]) + \
+                m[0][1] * (m[1][2] * m[2][0] - m[1][0] * m[2][2]) + \
+                m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0])
+        neg = m[0][2] * (m[1][1] * m[2][0] - m[1][0] * m[2][1]) + \
+                m[0][1] * (m[1][0] * m[2][2] - m[1][2] * m[2][0]) + \
+                m[0][0] * (m[1][2] * m[2][1] - m[1][1] * m[2][2])
         return pos - neg
     
-
     def identidad(self, n):
         if not isinstance(n, int) or n < 0:
             raise ValueError("El tamaño de la matriz identidad debe ser un entero no negativo.")
@@ -123,37 +120,18 @@ class Matrix:
         return [matriz[i][i] for i in range(len(matriz))]
 
     def es_diagonal(self, matriz):
-        """
-        Verifica si una matriz cuadrada es diagonal
-        (todos los elementos fuera de la diagonal principal son cero).
-
-        Args:
-            matriz (list): Matriz cuadrada (lista de listas)
-
-        Returns:
-            bool: True si la matriz es diagonal, False en caso contrario
-
-        Ejemplo:
-            es_diagonal([[3, 0], [0, 7]]) -> True
-            es_diagonal([[1, 2], [0, 4]]) -> False
-        """
-        pass
-
+        def es_diagonal(self, matriz):
+         for i in range(len(matriz)):
+            for j in range(len(matriz[i])):
+                if i != j and matriz[i][j] != 0:
+                    return False
+        return True
+    
     def rotar_90(self, matriz):
-        """
-        Rota una matriz 90 grados en sentido horario.
-
-        Args:
-            matriz (list): Matriz (lista de listas)
-
-        Returns:
-            list: Matriz rotada 90 grados en sentido horario
-
-        Ejemplo:
-            rotar_90([[1, 2], [3, 4]]) -> [[3, 1], [4, 2]]
-            rotar_90([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) -> [[7, 4, 1], [8, 5, 2], [9, 6, 3]]
-        """
-        pass
+        if not matriz:  
+            return []
+        matriz_rotada = [list(fila) for fila in zip(*matriz[::-1])]
+        return matriz_rotada
 
     def buscar_en_matriz(self, matriz, valor):
         """
