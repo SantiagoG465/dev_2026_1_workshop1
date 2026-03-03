@@ -59,13 +59,14 @@ class Matrix:
         return resultado
     
     def es_cuadrada(self, matriz):
-        num_filas = len(matriz)
-        if num_filas == 0:
-            return True  # Consideramos una matriz vacía como cuadrada
-        for fila in matriz:
-            if len(fila) != num_filas:
-                return False
-        return True
+       num_filas = len(matriz)
+       if   num_filas == 0:
+           return False
+       for fila in matriz:
+           if len(fila) != num_filas:
+               return False
+           return True
+    
 
     def es_simetrica(self, matriz):
         if not self.es_cuadrada(matriz):
