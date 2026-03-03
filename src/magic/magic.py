@@ -1,9 +1,7 @@
 class Magic:
     def fibonacci(self, n):
-        # El test pide específicamente None para entradas negativas
         if n < 0:
             return None
-        # Para 0, el test espera 0
         if n == 0:
             return 0
         if n == 1:
@@ -107,6 +105,19 @@ class Magic:
         return suma == n
     
     def es_cuadrado_magico(self, matriz):
-        lado = len(matriz)
+        lado    = len(matriz)
         if lado == 0 or any(len(fila) != lado for fila in matriz):
             return False
+        suma_objetivo = sum(matriz[0])
+        
+        for fila in matriz:
+            if sum(fila) != suma_objetivo:
+                return False
+        for col in range(lado):
+            if sum(matriz[fila][col] for fila in range(lado)) != suma_objetivo:
+                return False
+        if sum(matriz[i][i] for i in range(lado)) != suma_objetivo: 
+            return False
+        
+        return True
+        
