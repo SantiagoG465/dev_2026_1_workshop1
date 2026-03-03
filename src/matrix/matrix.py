@@ -23,40 +23,36 @@ class Matrix:
         return resultado
 
     def multiplicar_matrices(self, A, B):
-        """
-        Multiplica dos matrices usando la multiplicación matricial estándar.
-        El número de columnas de A debe ser igual al número de filas de B.
+        filas_A = len(A)
+        columnas_A = len(A[0])
+        filas_B = len(B)
+        columnas_B = len(B[0])
 
-        Args:
-            A (list): Primera matriz de dimensiones m x n
-            B (list): Segunda matriz de dimensiones n x p
+        if columnas_A != filas_B:
+            raise ValueError("Las matrices no son compatibles para multiplicación.")
 
-        Returns:
-            list: Matriz resultante de dimensiones m x p
-
-        Raises:
-            ValueError: Si las dimensiones son incompatibles para multiplicación
-
-        Ejemplo:
-            multiplicar_matrices([[1, 2], [3, 4]], [[5, 6], [7, 8]]) -> [[19, 22], [43, 50]]
-        """
-        pass
-
+        resultado = []
+        for i in range(filas_A):
+            fila_resultado = []
+            for j in range(columnas_B):
+                suma_producto = 0
+                for k in range(columnas_A):
+                    suma_producto += A[i][k] * B[k][j]
+                fila_resultado.append(suma_producto)
+            resultado.append(fila_resultado)
+        return resultado
+    
     def multiplicar_escalar(self, matriz, escalar):
-        """
-        Multiplica cada elemento de la matriz por un escalar.
-
-        Args:
-            matriz (list): Matriz (lista de listas)
-            escalar (number): Valor escalar por el que se multiplica
-
-        Returns:
-            list: Matriz con cada elemento multiplicado por el escalar
-
-        Ejemplo:
-            multiplicar_escalar([[1, 2], [3, 4]], 3) -> [[3, 6], [9, 12]]
-        """
-        pass
+        resultado = []
+        for fila in matriz:
+            fila_resultado = []
+            for elemento in fila:
+                fila_resultado.append(elemento * escalar)
+            resultado.append(fila_resultado)
+            for elemento in fila:
+                fila_resultado.append(elemento * escalar)
+                resultado.append(fila_resultado)
+        return resultado
 
     def transpuesta(self, matriz):
         """
