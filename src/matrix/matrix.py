@@ -120,12 +120,13 @@ class Matrix:
         return [matriz[i][i] for i in range(len(matriz))]
 
     def es_diagonal(self, matriz):
-        def es_diagonal(self, matriz):
+         if not self.es_cuadrada(matriz):
+             return False
          for i in range(len(matriz)):
-            for j in range(len(matriz[i])):
-                if i != j and matriz[i][j] != 0:
-                    return False
-        return True
+             for j in range(len(matriz)):
+                 if i != j and matriz[i][j] != 0:
+                     return False
+         return True
     
     def rotar_90(self, matriz):
         if not matriz:  
@@ -134,19 +135,9 @@ class Matrix:
         return matriz_rotada
 
     def buscar_en_matriz(self, matriz, valor):
-        """
-        Busca un valor en la matriz y retorna todas las posiciones donde se encuentra.
-
-        Args:
-            matriz (list): Matriz (lista de listas)
-            valor: Valor a buscar en la matriz
-
-        Returns:
-            list: Lista de tuplas (fila, columna) con las posiciones del valor.
-                  Retorna lista vacía si no se encuentra.
-
-        Ejemplo:
-            buscar_en_matriz([[1, 2, 3], [4, 2, 6], [7, 8, 2]], 2) -> [(0, 1), (1, 1), (2, 2)]
-            buscar_en_matriz([[1, 2], [3, 4]], 9) -> []
-        """
-        pass
+        posiciones = []
+        for i in range(len(matriz)):
+            for j in range(len(matriz[i])):
+                if matriz[i][j] == valor:
+                    posiciones.append((i, j))
+        return posiciones
