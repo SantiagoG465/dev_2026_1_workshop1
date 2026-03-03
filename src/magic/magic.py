@@ -78,7 +78,6 @@ class Magic:
         for i in range(2, n + 1):
             resultado *= i
         
-        # EL SECRETO ESTÁ AQUÍ: Debe estar FUERA del for
         return resultado
     
     def mcd(self, a, b):
@@ -90,29 +89,14 @@ class Magic:
         
     
     def mcm(self, a, b):
-        """
-        Calcula el mínimo común múltiplo de dos números.
+        a, b = abs(a), abs(b)
+        if a == 0 or b == 0:
+            return 0
+        return (a * b) // self.mcd(a, b)
         
-        Args:
-            a (int): Primer número
-            b (int): Segundo número
-            
-        Returns:
-            int: El mínimo común múltiplo de a y b
-        """
-        pass
     
     def suma_digitos(self, n):
-        """
-        Calcula la suma de los dígitos de un número.
-        
-        Args:
-            n (int): Número para sumar sus dígitos
-            
-        Returns:
-            int: La suma de los dígitos de n
-        """
-        pass
+        return sum(int(digito) for digito in str(abs(n)))
     
     def es_numero_armstrong(self, n):
         """
