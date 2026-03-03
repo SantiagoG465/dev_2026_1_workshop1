@@ -1,20 +1,26 @@
 class Matrix:
    
     def suma_matrices(self, A, B):
-        self.suma_matrices = []
-        for i in range(len(A)):     
+        if len(A) != len(B) or len(A[0]) != len(B[0]):
+            raise ValueError("Las matrices deben tener las mismas dimensiones para sumar.")
+        resultado = []
+        for i in range(len(A)):
             fila_suma = []
             for j in range(len(A[0])):
                 fila_suma.append(A[i][j] + B[i][j])
-            self.suma_matrices.append(fila_suma)
+            resultado.append(fila_suma)
+        return resultado
     
     def resta_matrices(self, A, B):
-        self.resta_matrices = []
-        for i in range(len(A)):     
+        if len(A) != len(B) or len(A[0]) != len(B[0]):
+            raise ValueError("Las matrices deben tener las mismas dimensiones para restar.")
+        resultado = []
+        for i in range(len(A)):
             fila_resta = []
             for j in range(len(A[0])):
                 fila_resta.append(A[i][j] - B[i][j])
-            self.resta_matrices.append(fila_resta)
+            resultado.append(fila_resta)
+        return resultado
 
     def multiplicar_matrices(self, A, B):
         """
