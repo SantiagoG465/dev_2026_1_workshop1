@@ -16,37 +16,24 @@ class Stats:
            return datos_ordenados[mitad]
 
     def moda(self, numeros):
-        """
-        Encuentra el valor que aparece con mayor frecuencia en la lista.
-        Si hay empate, retorna el primer valor encontrado.
-        
-        Args:
-            numeros (list): Lista de números
-            
-        Returns:
-            number: El valor más frecuente
-            
-        Ejemplo:
-            moda([1, 2, 2, 3, 3, 3]) -> 3
-        """
-        pass
+        if not numeros:
+            return None
+        frecuencia = {}
+        for num in numeros:
+            frecuencia[num] = frecuencia.get(num, 0) + 1
+        max_frecuencia = max(frecuencia.values())
+        modas = [num for num, freq in frecuencia.items() if freq == max_frecuencia]
+        if len(modas) == len(frecuencia):
+            return None  # No hay moda si todos los números son únicos
+        return modas[0]  # Retorna la primera moda encontrada
     
     def desviacion_estandar(self, numeros):
-        """
-        Calcula la desviación estándar de una lista de números.
-        Usa la fórmula de desviación estándar poblacional.
-        
-        Args:
-            numeros (list): Lista de números
-            
-        Returns:
-            float: La desviación estándar
-            
-        Ejemplo:
-            desviacion_estandar([1, 2, 3, 4, 5]) -> 1.41...
-        """
-        pass
-    
+        if not numeros:
+          return 0.0
+        media = self.promedio(numeros)
+        varianza = sum((x - media) ** 2 for x in numeros) / len(numeros)
+        return varianza ** 0.5
+
     def varianza(self, numeros):
         """
         Calcula la varianza de una lista de números.
