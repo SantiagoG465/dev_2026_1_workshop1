@@ -59,37 +59,22 @@ class Matrix:
         return resultado
     
     def es_cuadrada(self, matriz):
-        """
-        Verifica si una matriz es cuadrada (mismo número de filas y columnas).
-
-        Args:
-            matriz (list): Matriz (lista de listas)
-
-        Returns:
-            bool: True si la matriz es cuadrada, False en caso contrario
-
-        Ejemplo:
-            es_cuadrada([[1, 2], [3, 4]]) -> True
-            es_cuadrada([[1, 2, 3], [4, 5, 6]]) -> False
-        """
-        pass
+        num_filas = len(matriz)
+        if num_filas == 0:
+            return True  # Consideramos una matriz vacía como cuadrada
+        for fila in matriz:
+            if len(fila) != num_filas:
+                return False
+        return True
 
     def es_simetrica(self, matriz):
-        """
-        Verifica si una matriz es simétrica (igual a su transpuesta).
-        Solo aplica a matrices cuadradas.
-
-        Args:
-            matriz (list): Matriz cuadrada (lista de listas)
-
-        Returns:
-            bool: True si la matriz es simétrica, False en caso contrario
-
-        Ejemplo:
-            es_simetrica([[1, 2, 3], [2, 5, 6], [3, 6, 9]]) -> True
-            es_simetrica([[1, 2], [3, 4]]) -> False
-        """
-        pass
+        if not self.es_cuadrada(matriz):
+            return False
+        for i in range(len(matriz)):
+            for j in range(i, len(matriz)):
+                if matriz[i][j] != matriz[j][i]:
+                    return False
+        return True
 
     def traza(self, matriz):
         """
