@@ -1,46 +1,22 @@
 class Matrix:
-    """
-    Clase con métodos para operaciones sobre matrices.
-    Incluye operaciones aritméticas, propiedades y transformaciones matriciales.
-    """
-
+   
     def suma_matrices(self, A, B):
-        """
-        Suma dos matrices elemento a elemento.
-
-        Args:
-            A (list): Primera matriz (lista de listas)
-            B (list): Segunda matriz (lista de listas), debe tener las mismas dimensiones que A
-
-        Returns:
-            list: Matriz resultante de la suma
-
-        Raises:
-            ValueError: Si las matrices tienen dimensiones incompatibles
-
-        Ejemplo:
-            suma_matrices([[1, 2], [3, 4]], [[5, 6], [7, 8]]) -> [[6, 8], [10, 12]]
-        """
-        pass
+        suma = []
+        for i in range(len(A)):
+            fila_suma = []
+            for j in range(len(A[0])):
+                fila_suma.append(A[i][j] + B[i][j])
+            suma.append(fila_suma)
+        return suma
 
     def resta_matrices(self, A, B):
-        """
-        Resta dos matrices elemento a elemento (A - B).
-
-        Args:
-            A (list): Primera matriz (lista de listas)
-            B (list): Segunda matriz (lista de listas), debe tener las mismas dimensiones que A
-
-        Returns:
-            list: Matriz resultante de la resta
-
-        Raises:
-            ValueError: Si las matrices tienen dimensiones incompatibles
-
-        Ejemplo:
-            resta_matrices([[5, 6], [7, 8]], [[1, 2], [3, 4]]) -> [[4, 4], [4, 4]]
-        """
-        pass
+        resta = []
+        for i in range(len(A)):
+            fila_resta = []
+            for j in range(len(A[0])):
+                fila_resta.append(A[i][j] - B[i][j])
+            resta.append(fila_resta)
+        return resta
 
     def multiplicar_matrices(self, A, B):
         """
