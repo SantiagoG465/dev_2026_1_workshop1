@@ -99,25 +99,14 @@ class Magic:
         return sum(int(digito) for digito in str(abs(n)))
     
     def es_numero_armstrong(self, n):
-        """
-        Verifica si un número es de Armstrong (igual a la suma de sus dígitos elevados a la potencia del número de dígitos).
-        
-        Args:
-            n (int): Número a verificar
-            
-        Returns:
-            bool: True si n es un número de Armstrong, False en caso contrario
-        """
-        pass
+        if n < 0:
+            return False
+        str_n = str(n)
+        num_digitos = len(str_n)
+        suma = sum(int(digito) ** num_digitos for digito in str_n)
+        return suma == n
     
     def es_cuadrado_magico(self, matriz):
-        """
-        Verifica si una matriz es un cuadrado mágico (suma igual en filas, columnas y diagonales).
-        
-        Args:
-            matriz (list): Lista de listas que representa una matriz cuadrada
-            
-        Returns:
-            bool: True si es un cuadrado mágico, False en caso contrario
-        """
-        pass
+        lado = len(matriz)
+        if lado == 0 or any(len(fila) != lado for fila in matriz):
+            return False
