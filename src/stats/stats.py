@@ -1,7 +1,8 @@
 class Stats:
     def promedio(self, numeros):
-        self.promedio = sum(numeros) / len(numeros) if numeros else 0
-        return self.promedio
+        if numeros  == []:
+            return 0
+        return sum(numeros) / len(numeros)
     
     def mediana(self, numeros):
         """
