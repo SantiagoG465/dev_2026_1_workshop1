@@ -45,13 +45,8 @@ class Matrix:
     def multiplicar_escalar(self, matriz, escalar):
         resultado = []
         for fila in matriz:
-            fila_resultado = []
-            for elemento in fila:
-                fila_resultado.append(elemento * escalar)
+            fila_resultado = [elemento * escalar for elemento in fila]
             resultado.append(fila_resultado)
-            for elemento in fila:
-                fila_resultado.append(elemento * escalar)
-                resultado.append(fila_resultado)
         return resultado
 
     def transpuesta(self, matriz):
