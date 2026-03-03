@@ -5,22 +5,16 @@ class Stats:
         return sum(numeros) / len(numeros)
     
     def mediana(self, numeros):
-        """
-        Encuentra el valor mediano de una lista de números.
-        Para listas con número par de elementos, retorna el promedio de los dos valores centrales.
-        
-        Args:
-            numeros (list): Lista de números
-            
-        Returns:
-            float: El valor mediano
-            
-        Ejemplo:
-            mediana([1, 2, 3, 4, 5]) -> 3.0
-            mediana([1, 2, 3, 4]) -> 2.5
-        """
-        pass
-    
+       if not   numeros:
+            return 0
+       datos_ordenados = sorted(numeros)
+       n = len(datos_ordenados)
+       mitad = n // 2
+       if n % 2 == 0:
+           return (datos_ordenados[mitad - 1] + datos_ordenados[mitad]) / 2
+       else:
+           return datos_ordenados[mitad]
+
     def moda(self, numeros):
         """
         Encuentra el valor que aparece con mayor frecuencia en la lista.
