@@ -1,18 +1,7 @@
 class Stats:
     def promedio(self, numeros):
-        """
-        Calcula la media aritmética de una lista de números.
-        
-        Args:
-            numeros (list): Lista de números
-            
-        Returns:
-            float: La media aritmética de los números
-            
-        Ejemplo:
-            promedio([1, 2, 3, 4, 5]) -> 3.0
-        """
-        pass
+        self.promedio = sum(numeros) / len(numeros) if numeros else 0
+        return self.promedio
     
     def mediana(self, numeros):
         """
