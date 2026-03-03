@@ -19,13 +19,10 @@ class Stats:
         if not numeros:
             return None
         frecuencia = {}
-        for num in numeros:
-            frecuencia[num] = frecuencia.get(num, 0) + 1
-        max_frecuencia = max(frecuencia.values())
-        modas = [num for num, freq in frecuencia.items() if freq == max_frecuencia]
-        if len(modas) == len(frecuencia):
-            return None  # No hay moda si todos los números son únicos
-        return modas[0]  # Retorna la primera moda encontrada
+        for numero in numeros:
+            frecuencia[numero] = frecuencia.get(numero, 0) + 1
+        moda = max(frecuencia, key=frecuencia.get)
+        return moda
     
     def desviacion_estandar(self, numeros):
         if not numeros:
