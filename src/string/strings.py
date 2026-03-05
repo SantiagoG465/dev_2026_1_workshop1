@@ -44,9 +44,7 @@ class Strings:
         return len(palabras)
     
     def palabras_mayus(self, texto):
-        import re
-        palabras    = re.findall(r'\b[A-Z][a-zA-Z]*\b', texto)
-        return palabras
+       return texto.title()
     
     def eliminar_espacios_duplicados(self, texto):
        return ' '.join(texto.split())
