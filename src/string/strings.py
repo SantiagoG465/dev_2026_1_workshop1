@@ -44,34 +44,15 @@ class Strings:
         return len(palabras)
     
     def palabras_mayus(self, texto):
-        from string import punctuation
-        texto_limpio = ''.join(char for char in texto if char not in punctuation)
-        palabras = texto_limpio.split()
-        return [palabra for palabra in palabras if palabra.isupper()]
+        import re
+        palabras    = re.findall(r'\b[A-Z][a-zA-Z]*\b', texto)
+        return palabras
     
     def eliminar_espacios_duplicados(self, texto):
-        """
-        Elimina espacios duplicados en una cadena.
-        
-        Args:
-            texto (str): Cadena con posibles espacios duplicados
-            
-        Returns:
-            str: Cadena sin espacios duplicados
-        """
-        pass
+       return ' '.join(texto.split())
     
     def es_numero_entero(self, texto):
-        """
-        Verifica si una cadena representa un número entero sin usar isdigit().
-        
-        Args:
-            texto (str): Cadena a verificar
-            
-        Returns:
-            bool: True si la cadena representa un número entero, False en caso contrario
-        """
-        pass
+        return texto.isdigit() or (texto.startswith('-') and texto[1:].isdigit())
     
     def cifrar_cesar(self, texto, desplazamiento):
         """
