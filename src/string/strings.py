@@ -1,3 +1,6 @@
+import re
+
+
 class Strings:
     
     def es_palindromo(self, texto):
@@ -47,7 +50,9 @@ class Strings:
        return texto.title()
     
     def eliminar_espacios_duplicados(self, texto):
-       return ' '.join(texto.split())
+       if not texto:
+            return ""
+       return re.sub(r'\s+', ' ', texto)
     
     def es_numero_entero(self, texto):
         return texto.isdigit() or (texto.startswith('-') and texto[1:].isdigit())
