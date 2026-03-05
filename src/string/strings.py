@@ -15,10 +15,14 @@ class Strings:
         vocales = 'aeiouAEIOU'
         return sum(1 for char in texto if char in vocales)
     
-    def contar_consonantes(self, texto):
-        vocales = 'aeiouAEIOU'
-        return sum(1 for char in texto if char.isalpha() and char not in vocales)
-    
+    def contar_consonantes(self, cadena):
+     vocales   = 'aeiouAEIOU'
+     contador = 0
+     for letra in cadena:
+         if letra.isalpha() and letra not in vocales:
+             contador += 1
+             return contador
+
     def es_anagrama(self, texto1, texto2):
         from string import punctuation
         texto1_limpio = ''.join(char for char in texto1 if char not in punctuation).replace(" ", "").lower()
