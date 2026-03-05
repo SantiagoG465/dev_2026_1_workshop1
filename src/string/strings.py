@@ -69,17 +69,7 @@ class Strings:
         return resultado
 
     def descifrar_cesar(self, texto, desplazamiento):
-        """
-        Descifra una cadena cifrada con el método César.
-        
-        Args:
-            texto (str): Cadena cifrada
-            desplazamiento (int): Número de posiciones que se desplazó cada letra
-            
-        Returns:
-            str: Cadena descifrada
-        """
-        pass
+        return self.cifrar_cesar(texto, -desplazamiento)
     
     def encontrar_subcadena(self, texto, subcadena):
         """
