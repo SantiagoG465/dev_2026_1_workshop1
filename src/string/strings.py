@@ -12,41 +12,18 @@ class Strings:
         return texto_limpio[::-1]
     
     def contar_vocales(self, texto):
-        """
-        Cuenta el número de vocales en una cadena.
-        
-        Args:
-            texto (str): Cadena para contar vocales
-            
-        Returns:
-            int: Número de vocales en la cadena
-        """
-        pass
+        vocales = 'aeiouAEIOU'
+        return sum(1 for char in texto if char in vocales)
     
     def contar_consonantes(self, texto):
-        """
-        Cuenta el número de consonantes en una cadena.
-        
-        Args:
-            texto (str): Cadena para contar consonantes
-            
-        Returns:
-            int: Número de consonantes en la cadena
-        """
-        pass
+        vocales = 'aeiouAEIOU'
+        return sum(1 for char in texto if char.isalpha() and char not in vocales)
     
     def es_anagrama(self, texto1, texto2):
-        """
-        Verifica si dos cadenas son anagramas (contienen exactamente los mismos caracteres).
-        
-        Args:
-            texto1 (str): Primera cadena
-            texto2 (str): Segunda cadena
-            
-        Returns:
-            bool: True si son anagramas, False en caso contrario
-        """
-        pass
+        from string import punctuation
+        texto1_limpio = ''.join(char for char in texto1 if char not in punctuation).replace(" ", "").lower()
+        texto2_limpio = ''.join(char for char in texto2 if char not in punctuation).replace(" ", "").lower()
+        return sorted(texto1_limpio) == sorted(texto2_limpio)
     
     def contar_palabras(self, texto):
         """
