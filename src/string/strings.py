@@ -26,16 +26,10 @@ class Strings:
         return sorted(texto1_limpio) == sorted(texto2_limpio)
     
     def contar_palabras(self, texto):
-        """
-        Cuenta el número de palabras en una cadena.
-        
-        Args:
-            texto (str): Cadena para contar palabras
-            
-        Returns:
-            int: Número de palabras en la cadena
-        """
-        pass
+        from string import punctuation
+        texto_limpio = ''.join(char for char in texto if char not in punctuation)
+        palabras = texto_limpio.split()
+        return len(palabras)
     
     def palabras_mayus(self, texto):
         """
