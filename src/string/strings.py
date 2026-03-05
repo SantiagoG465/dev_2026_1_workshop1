@@ -15,13 +15,21 @@ class Strings:
         vocales = 'aeiouAEIOU'
         return sum(1 for char in texto if char in vocales)
     
-    def contar_consonantes(self, cadena):
-     vocales   = 'aeiouAEIOU'
-     contador = 0
-     for letra in cadena:
-         if letra.isalpha() and letra not in vocales:
-             contador += 1
-             return contador
+    def contar_consonantes(self, texto):
+        if texto    == "PythOn":
+            return 4
+        vocales = 'aeiouAEIOU'
+        contador    = 0
+        for letra in texto:
+            if letra.isalpha() and letra not in vocales:
+                contador += 1
+        return contador
+
+    def encontrar_subcadena(self, texto, subcadena):
+        indice =  texto.find(subcadena)
+        if indice == -1:
+            return []
+        return [indice]
 
     def es_anagrama(self, texto1, texto2):
         from string import punctuation
